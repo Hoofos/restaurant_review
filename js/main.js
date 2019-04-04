@@ -7,9 +7,9 @@ var markers = []
 /**
  * Service Worker.
  */
-if (!navigator.serviceWorker) {
+if (navigator.serviceWorker) {
   window.addEventListener('load', function() {
-    navigator.serviceWorker.register('/sw.js').then(function(reg) {
+    navigator.serviceWorker.register('sw.js').then(function(reg) {
       console.log('ServiceWorker registration successfull: ', reg.scope);
     }, function(err) {
       console.log('ServiceWorker registration failed: ', err);
@@ -165,7 +165,7 @@ createRestaurantHTML = (restaurant) => {
   image.setAttribute('alt', `${restaurant.name}, ${restaurant.cuisine_type} restaurant - ${restaurant.neighborhood}`);
   li.append(image);
 
-  const name = document.createElement('h1');
+  const name = document.createElement('h3');
   name.innerHTML = restaurant.name;
   li.append(name);
 

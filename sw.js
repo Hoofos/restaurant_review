@@ -4,6 +4,7 @@ let staticCacheName = 'restaurant-review-cache';
  * What to cache.
  */
 let urlsToCache = [
+  '/',
   '/index.html',
   '/restaurant.html',
   '/css/styles.css',
@@ -47,7 +48,7 @@ self.addEventListener('activate', function(event) {
         cacheNames.filter(function(cacheName) {
           return cacheName.startsWith('restaurant-') && cacheName !== staticCacheName;
         }).map(function(cacheName) {
-          return cache.delete(cacheName);
+          return caches.delete(cacheName);
         })
       ).then(function() {
         console.log('ServiceWorker Activated');
